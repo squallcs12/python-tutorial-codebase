@@ -2,9 +2,10 @@
 
 {% block content %}
 <div class="col-lg-6">
+    <h1>Polls Index</h1>
     <div class="list-group questions">
         {% for question in questions %}
-        <a href="#" class="list-group-item question">{{ question.text }}</a>
+        <a href="{{ question.get_absolute_url }}" class="list-group-item question">{{ question.text }}</a>
         {% endfor %}
     </div>
 </div>

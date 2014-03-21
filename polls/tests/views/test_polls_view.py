@@ -14,12 +14,17 @@ class TestPollsView(TestCase):
 
     def test_index_page(self):
         response = self.client.get('/')
+
         response.status_code.should.equal(200)
+        response.content.should.contain("Polls Index")
         for question in self.questions:
             response.content.should.contain(question.text)
 
+
     def test_poll_details_page(self):
         question = self.questions[0]
-        response = self.client.get('/detail/%s' % question.id)
+        response = self.client.get(question.get_absolute_url())
+
         response.status_code.should.equal(200)
+        response.content.should.contain("Polls Details")
         response.content.should.contain(question.text)
