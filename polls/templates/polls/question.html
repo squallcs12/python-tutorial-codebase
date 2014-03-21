@@ -3,8 +3,31 @@
 {% block content %}
 <div class="col-lg-6">
     <h1>Polls Details</h1>
-    <div class="list-group question">
-        <a href="{{ question.get_absolute_url }}" class="list-group-item question">{{ question.text }}</a>
+    <h3>Vote for {{ question.text }}</h3>
+    <div class="well bs-component">
+        <form class="form-horizontal" method="POST" action="{% url 'poll_detail' question.id %}">
+            {% csrf_token %}
+            <fieldset>
+                <legend>Choices</legend>
+                <div class="form-group">
+                    <div class="col-lg-10">
+                        {% for choice in question.choices.all %}
+                        <div class="radio">
+                            <label>
+                                <input id="choice_id_{{ choice.id }}" type="radio" name="choice_id" value="{{ choice.id }}">
+                                {{ choice.text }}
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
     </div>
 </div>
 {% endblock %}

@@ -33,6 +33,9 @@ class TestPollsView(TestCase):
         response.content.should.contain("Polls Details")
         response.content.should.contain(question.text)
 
+        for choice in question.choices.all():
+            response.content.should.contain(choice.text)
+
     def test_vote_poll(self):
         question = self.questions[0]
         response = self.client.post(question.get_absolute_url(), {
