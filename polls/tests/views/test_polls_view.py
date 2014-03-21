@@ -9,6 +9,7 @@ class TestPollsView(TestCase):
         self.questions = []
         for i in range(0, 10):
             question = QuestionFactory.create()
+            question.save()
             self.questions.append(question)
 
     def test_index_page(self):
