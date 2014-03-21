@@ -17,3 +17,9 @@ class TestPollsView(TestCase):
         response.status_code.should.equal(200)
         for question in self.questions:
             response.content.should.contain(question.text)
+
+    def test_poll_details_page(self):
+        question = self.questions[0]
+        response = self.client.get('/detail/%s' % question.id)
+        response.status_code.should.equal(200)
+        response.content.should.contain(question.text)
