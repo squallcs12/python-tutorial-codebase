@@ -1,4 +1,7 @@
 from django.db import models
 
 class Question(models.Model):
-    pass
+    text = models.TextField()
+
+    class Meta:
+        app_label = "polls"
