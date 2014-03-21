@@ -1,6 +1,11 @@
 {% extends "base.html" %}
-<ul class="questions">
-    {% for question in questions %}
-    <li>{{ question.text }}</li>
-    {% endfor %}
-</ul>
+
+{% block content %}
+<div class="col-lg-6">
+    <div class="list-group questions">
+        {% for question in questions %}
+        <a href="#" class="list-group-item question">{{ question.text }}</a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
