@@ -120,13 +120,12 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'polls',
     'south',
     'poll_tutorial',
+    'lettuce.django',
 )
 
 # A sample logging configuration. The only tangible logging
