@@ -8,7 +8,8 @@ class TestPollsView(TestCase):
         self.client = Client()
         self.questions = []
         for i in range(0, 10):
-            self.questions.append(QuestionFactory.create())
+            question = QuestionFactory.create()
+            self.questions.append(question)
 
     def test_index_page(self):
         response = self.client.get('/')
